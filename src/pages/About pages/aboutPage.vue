@@ -24,6 +24,7 @@ import {
 
 import { watch } from "vue";
 
+//two main ways of declaring reactive data: ref and reactive
 const count = ref(0); //primitive value(string & number) so ref()
 
 //object, better to use reactive()
@@ -41,9 +42,10 @@ function increament() {
   }
 }
 
-/* watch(count(currentValue, previousValue) => {
-
-}); */
+//Use watch() to run code when a reactive value changes.
+watch(user, (newValue, oldValue) => {
+  console.log(`count changed from ${oldValue} to ${newValue}`);
+});
 
 //Runs before component mounts
 onBeforeMount(() => {});
