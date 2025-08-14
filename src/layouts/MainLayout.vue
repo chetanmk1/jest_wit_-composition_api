@@ -24,21 +24,21 @@
           style="width: auto; height: 200px"
         /> -->
       </div>
-      <q-item to="/" clickable v-ripple>
+      <q-item v-ripple to="/" clickable>
         <q-item-section avatar>
           <q-icon name="dashboard" />
         </q-item-section>
         <q-item-section> Dashboard </q-item-section>
       </q-item>
 
-      <q-item to="/homePage" clickable v-ripple>
+      <q-item v-ripple to="/homePage" clickable>
         <q-item-section avatar>
           <q-icon name="laptop" />
         </q-item-section>
         <q-item-section> Home </q-item-section>
       </q-item>
 
-      <q-item to="/aboutPage" clickable v-ripple>
+      <q-item v-ripple to="/aboutPage" clickable>
         <q-item-section avatar>
           <q-icon name="storefront" />
         </q-item-section>
@@ -54,7 +54,7 @@
 
 <script setup>
 import { ref } from "vue";
-import EssentialLink from "components/EssentialLink.vue";
+//import EssentialLink from "components/EssentialLink.vue";
 
 defineOptions({
   name: "MainLayout",
