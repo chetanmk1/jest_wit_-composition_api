@@ -22,7 +22,9 @@ import {
   onUnmounted, //Runs after component unmounts
 } from "vue";
 
-import { watch } from "vue";
+import { watch } from "vue"; //React to changes, To run code when a reactive value changes.
+import { watchEffect } from "vue";
+import { nextTick } from "vue"; //Wait until DOM is updated
 
 //two main ways of declaring reactive data: ref and reactive
 const count = ref(0); //primitive value(string & number) so ref()
@@ -33,20 +35,30 @@ const user = reactive({
   age: 27,
 });
 
-function increament() {
+//Functions
+async function increament() {
   try {
-    console.log("increament function");
-    count.value++;
+    count.value++; // Reactive change (DOM update will be scheduled)
+
+    await nextTick(); // Wait until DOM is updated
+    // Now the DOM reflects the new `count` value
+    console.log("DOM updated after count++");
   } catch (error) {
     console.error(error);
   }
 }
 
+//Wachers
 //Use watch() to run code when a reactive value changes.
-watch(user, (newValue, oldValue) => {
-  console.log(`count changed from ${oldValue} to ${newValue}`);
+watch(count, (newValue, oldValue) => {
+  console.log(`increament changed from ${oldValue} to ${newValue}`);
 });
 
+watchEffect(() => {
+  console.log(`Count changed from watchEffect, current: ${count.value}`);
+});
+
+//Reactive hooks
 //Runs before component mounts
 onBeforeMount(() => {});
 

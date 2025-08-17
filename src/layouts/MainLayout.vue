@@ -73,4 +73,5 @@ const miniState = ref(true);
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 }
+
 </script>
